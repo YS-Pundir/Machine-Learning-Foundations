@@ -1,0 +1,10 @@
+use DBeaver;
+drop table students;
+create table students(
+id int primary key,
+name varchar(50),
+score int,
+passed Boolean,
+class int
+);
+
