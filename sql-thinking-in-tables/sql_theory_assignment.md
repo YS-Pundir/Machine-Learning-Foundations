@@ -59,4 +59,7 @@ A schema doesn't hold the data itself; it defines the rules and shapes that the 
 
    4. Security
    Schemas allow administrators to control access. You can give a user permission to see the Products table but completely hide the CreditCardInfo table, all based on the schema's structure.
+5. 
+   Relational databases use Primary Keys (unique IDs) and Foreign Keys to link tables. In a Users and Orders system, each user has a unique user_id (Primary Key). To connect them, the Orders table includes a user_id column as a Foreign Key.
 
+   This creates a One-to-Many relationship: one user can place multiple orders, but each order points back to exactly one user. This structure ensures referential integrity, meaning you can’t have an order for a user who doesn't exist, keeping your data clean and organized.
