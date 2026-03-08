@@ -27,3 +27,7 @@ from students;
 
 select name,score
 from students;
+
+select name
+from  students
+where score>80;
