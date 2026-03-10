@@ -41,3 +41,78 @@ values
 (2,10),
 (3,5),
 (5,12);
+
+select name,amount
+from users 
+inner join orders
+on users.user_id =orders.user_id ;
+
+select  users.name,sum(orders.amount)
+from users 
+inner join orders 
+on users.user_id =orders.user_id 
+group by name;
+
+select name , login_count
+from users
+left join activity 
+on users.user_id =activity.user_id ;
+
+select name ,amount
+from users 
+left join orders 
+on users.user_id =orders.user_id 
+where amount is null;
+
+select users.user_id,users.name,sum(amount) ,login_count
+from users 
+inner join orders 
+on users.user_id =orders.user_id 
+inner join activity 
+on users.user_id =activity.user_id 
+group by users.user_id ,name,login_count;
+
+
+select name,amount
+from users
+left join orders 
+on users.user_id =orders.user_id 
+where orders.amount>400;
+
+select name,sum(amount) as Total_Amount
+from users 
+left join orders 
+on users.user_id =orders.user_id 
+group by name
+order by Total_Amount desc
+limit 3;
+
+select name,sum(amount) as Total_Amount
+from users 
+left join orders
+on users.user_id =orders.user_id 
+group by name
+order by Total_Amount desc;
+
+select name,login_count
+from users 
+left join activity
+on users.user_id =activity.user_id 
+group by name
+order by login_count desc;
+
+select name,avg(amount)/count(users.user_id) as Average_Amount
+from users
+left join orders
+on users.user_id =orders.user_id 
+group by name;
+
+select users.user_id,name,sum(amount) as Total_order_Amount
+from users
+left join orders 
+on users.user_id =orders.user_id 
+left join activity 
+on users.user_id =activity.user_id 
+group by users.user_id 
+order by Total_order_Amount desc
+limit 3;
